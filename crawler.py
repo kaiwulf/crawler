@@ -29,15 +29,18 @@ for i in range(1,51):
     res = req.request('GET', url)
     soup = BeautifulSoup(res.data, 'html.parser')
     contents = soup.find_all(class_='product_pod')
-    for i in soup.find_all():
+    if 'title' in i.attrs:
+        input("title in attrs")
         titles.append(i['title'])
     pounds = []
     c = []
-    for i in contents:
-        c.append(i.find().get_text())
-        for number in c:
-            amount = re.compile('[0-9]+.')
-            num = amount.findall(number)
-            pounds.append(float(''.join(num)))
-            for i in soup.find_all():
-                titles.append(i['title'])
+    # for i in contents:
+    #     c.append(i.find().get_text())
+    #     for number in c:
+    #         amount = re.compile('[0-9]+.')
+    #         num = amount.findall(number)
+    #         pounds.append(float(''.join(num)))
+    #         for i in soup.find_all():
+    #             if 'title' in i.attrs:
+    #                 input("title in attrs")
+    #                 titles.append(i['title'])
